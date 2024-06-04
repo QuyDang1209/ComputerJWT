@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Computer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="computer.js"></script>
+    <script src="computer.css"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            text-align: left;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        table th {
+            background-color: #300d31;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #ccc;
+        }
+        table tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+        table td{
+            background-color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+        }
+        table tr:hover td {
+            background-color: #ffedcc;
+        }
+
+    </style>
+</head>
+<body>
+<button onclick="showformCreate()" id="create">Create new Computer</button>
+<form style="display: none" id="form1">
+    <table>
+        <tr>
+            <td><label for="name">NAME</label></td>
+            <td><input id="name" type="text" placeholder="Enter Name"></td>
+        </tr>
+        <tr>
+            <td><label for="code">CODE</label></td>
+            <td><input id="code" type="text" placeholder="Enter Code"></td>
+        </tr>
+        <tr>
+            <td><label for="producer">PRODUCER</label></td>
+            <td><input id="producer" type="text" placeholder="Enter Producer"></td>
+        </tr>
+        <tr>
+            <td><label for="type">PRODUCER</label></td>
+            <td><select name="type" id="type">
+                <option value="IOS">IOS</option>
+                <option value="WINDOW">WINDOW</option>
+            </select> <br></td>
+        </tr>
+    </table>
+    <button type="button" onclick="createNewComputer()">Save</button>
+    <button onclick="hideFormCreate()">Cancel</button>
+</form>
+<table id="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>CODE</th>
+        <th>NAME</th>
+        <th>PRODUCER</th>
+        <th>TYPE</th>
+        <th>ACTION</th>
+    </tr>
+    </thead>
+    <tbody id="tb-computer">
+
+    </tbody>
+</table>
+<form id="form2" style="display: none">
+
+</form>
+</body>
+</html>
