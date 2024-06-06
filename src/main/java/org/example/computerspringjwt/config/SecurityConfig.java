@@ -25,9 +25,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+    @Configuration
+    @EnableWebSecurity
+    @EnableMethodSecurity
 public class SecurityConfig {
     @Autowired
     private UserService userService;
@@ -72,11 +72,12 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                        .requestMatchers("/api/auth/login**").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.PUT,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/computers**").hasAnyAuthority("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/static/**").permitAll()
+//                        .requestMatchers("/api/auth/login**").permitAll()
+//                        .requestMatchers(HttpMethod.GET,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
+//                        .requestMatchers(HttpMethod.PUT,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
+//                        .requestMatchers(HttpMethod.POST,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
+//                        .requestMatchers(HttpMethod.DELETE,"/api/computers/**").hasAnyAuthority("ROLE_ADMIN")
                 )
                 .exceptionHandling(customizer -> customizer.accessDeniedHandler(customAccessDeniedHandler()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
